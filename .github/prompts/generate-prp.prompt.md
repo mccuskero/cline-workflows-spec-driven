@@ -27,8 +27,10 @@ Your objective is to generate a comprehensive Product Requirements & Plan (PRP) 
    - Wait for responses before proceeding
    - Analyze each response to identify remaining gaps
    - **Ask about development phase** to determine coverage targets:
-     - Phase 1/POC (20% coverage target)
-     - Beta (80% coverage target)
+     - POC (10% coverage target)
+     - Alpha (40% coverage target)
+     - Beta (60% coverage target)
+     - Production (80% coverage target)
 
 3. **Decision Gate**
    - Only proceed to Phase 2 when gaps are adequately addressed
@@ -202,8 +204,8 @@ All new source files must include the appropriate file header and follow the lan
 ## 5. Testing Strategy (TDD)
 
 ### Development Phase
-- **Phase**: {Phase 1/POC | Beta}
-- **Coverage Target**: {20% for POC | 80% for Beta}
+- **Phase**: {POC | Alpha | Beta | Production}
+- **Coverage Target**: {10% for POC | 40% for Alpha | 60% for Beta | 80% for Production}
 
 ### TDD Approach
 Follow the Red-Green-Refactor cycle:
@@ -239,7 +241,7 @@ Follow the Red-Green-Refactor cycle:
 
 ### Final Checklist
 - [ ] All new code has tests written FIRST (TDD)
-- [ ] Code coverage meets target ({20% POC | 80% Beta})
+- [ ] Code coverage meets target ({10% POC | 40% Alpha | 60% Beta | 80% Production})
 - [ ] Linting passes with no errors
 - [ ] Type checking passes
 - [ ] Build completes successfully
@@ -313,8 +315,10 @@ When generating PRPs, always include references to the appropriate code standard
 
 | Development Phase | Minimum Coverage | Focus Areas |
 |-------------------|------------------|-------------|
-| Phase 1 / POC | 20% | Core functionality, happy paths |
-| Beta Phase | 80% | Edge cases, error handling, integration |
+| POC | 10% | Minimal - core functionality proof |
+| Alpha | 40% | Core functionality, happy paths |
+| Beta | 60% | Edge cases, error handling |
+| Production | 80% | Full coverage - edge cases, error handling, integration |
 
 Always ask about development phase to determine appropriate coverage target.
 Include coverage commands and targets in every PRP.

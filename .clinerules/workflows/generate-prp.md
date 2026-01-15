@@ -29,8 +29,10 @@ Feature description, user story, or path to brainstorming document
    - Wait for responses before proceeding
    - Use `<thinking>` blocks to analyze each response
    - **Ask about development phase** to determine coverage targets:
-     - Phase 1/POC (20% coverage target)
-     - Beta (80% coverage target)
+     - POC (10% coverage target)
+     - Alpha (40% coverage target)
+     - Beta (60% coverage target)
+     - Production (80% coverage target)
 
 3. **Decision Gate**
    - Only proceed to Phase 2 when gaps are adequately addressed
@@ -103,8 +105,8 @@ Feature description, user story, or path to brainstorming document
    - Coverage commands and reporting
 
    ### Code Coverage Requirements
-   - **Development Phase**: {Phase 1/POC | Beta}
-   - **Target Coverage**: {20% for POC | 80% for Beta}
+   - **Development Phase**: {POC | Alpha | Beta | Production}
+   - **Target Coverage**: {10% for POC | 40% for Alpha | 60% for Beta | 80% for Production}
    - Coverage focus areas for this feature
    - Critical paths requiring test coverage
 
@@ -153,8 +155,10 @@ Feature description, user story, or path to brainstorming document
 
 | Development Phase | Minimum Coverage | Focus Areas |
 |-------------------|------------------|-------------|
-| Phase 1 / POC | 20% | Core functionality, happy paths |
-| Beta Phase | 80% | Edge cases, error handling, integration |
+| POC | 10% | Minimal - core functionality proof |
+| Alpha | 40% | Core functionality, happy paths |
+| Beta | 60% | Edge cases, error handling |
+| Production | 80% | Full coverage - edge cases, error handling, integration |
 
 Always ask about development phase to determine appropriate coverage target.
 Include coverage commands and targets in every PRP.

@@ -125,8 +125,10 @@ Path to task file (e.g., `docs/tasks/feature-name.md`) and optionally a specific
 20. **Verify Code Coverage**
     - Run coverage report command
     - Check coverage meets phase requirements:
-      - **Phase 1 / POC**: Minimum 20% code coverage
-      - **Beta Phase**: Minimum 80% code coverage
+      - **POC**: Minimum 10% code coverage
+      - **Alpha**: Minimum 40% code coverage
+      - **Beta**: Minimum 60% code coverage
+      - **Production**: Minimum 80% code coverage
     - If coverage is below target for new code:
       - Add tests for uncovered paths
       - Prioritize error handling and edge cases
@@ -175,8 +177,10 @@ Follow the Red-Green-Refactor cycle for all implementation:
 
 | Development Phase | Minimum Coverage | Focus Areas |
 |-------------------|------------------|-------------|
-| Phase 1 / POC | 20% | Core functionality, happy paths |
-| Beta Phase | 80% | Edge cases, error handling, integration |
+| POC | 10% | Minimal - core functionality proof |
+| Alpha | 40% | Core functionality, happy paths |
+| Beta | 60% | Edge cases, error handling |
+| Production | 80% | Full coverage - edge cases, error handling, integration |
 
 ## Coverage Priority
 When adding tests to meet coverage targets, prioritize:

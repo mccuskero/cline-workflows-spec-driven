@@ -52,8 +52,10 @@ Follow the **Red-Green-Refactor** cycle for all implementation:
 
 | Development Phase | Minimum Coverage | Focus Areas |
 |-------------------|------------------|-------------|
-| **Phase 1 / POC** | 20% | Core functionality, happy paths |
-| **Beta Phase** | 80% | Edge cases, error handling, integration |
+| **POC** | 10% | Minimal - core functionality proof |
+| **Alpha** | 40% | Core functionality, happy paths |
+| **Beta** | 60% | Edge cases, error handling |
+| **Production** | 80% | Full coverage - edge cases, error handling, integration |
 
 ### Coverage Priority
 
@@ -74,16 +76,16 @@ When writing tests to meet coverage targets, prioritize:
 
 ```
 1. /generate-prp
-   → "What development phase is this? (POC or Beta)"
-   → User: "POC"
-   → PRP includes: Coverage Target: 20%
+   → "What development phase is this? (POC, Alpha, Beta, or Production)"
+   → User: "Alpha"
+   → PRP includes: Coverage Target: 40%
 
 2. /execute-prp docs/prps/feature.md
    → Write failing tests for first component (Red)
    → Implement to pass tests (Green)
    → Refactor and clean up
-   → Verify 20% coverage achieved
-   → Report: "Coverage: 23% (Target: 20%) ✓"
+   → Verify 40% coverage achieved
+   → Report: "Coverage: 43% (Target: 40%) ✓"
 ```
 
 ---
