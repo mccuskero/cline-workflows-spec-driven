@@ -1,20 +1,18 @@
+---
+mode: agent
+description: Execute individual development tasks from task breakdown documents with focused, incremental implementation
+---
+
 # Execute Task - Individual Task Implementation
 
-<task name="execute-task">
-<task_objective>
-Execute individual development tasks from task breakdown documents. Provides focused, incremental implementation for complex features that benefit from step-by-step execution.
-</task_objective>
+Your objective is to execute individual development tasks from task breakdown documents. This provides focused, incremental implementation for complex features that benefit from step-by-step execution.
 
-<input>
-Path to task file (e.g., `docs/tasks/feature-name.md`) and optionally a specific task ID (e.g., `T-001`)
-</input>
-
-<detailed_sequence_of_steps>
+**Input:** Path to task file (e.g., `docs/tasks/feature-name.md`) and optionally a specific task ID (e.g., `T-001`)
 
 ## Step 1: Load Task Document
 
 1. **Read Task File**
-   - Use `read_file` to load the task document
+   - Load the task document completely
    - Parse the document structure
    - Identify all tasks and their statuses
 
@@ -46,7 +44,7 @@ Path to task file (e.g., `docs/tasks/feature-name.md`) and optionally a specific
 
 7. **Examine Code Patterns**
    - Read reference files mentioned in task
-   - Use `search_files` to find similar implementations
+   - Find similar implementations in codebase
    - Document patterns to follow
 
 ## Step 3: Implementation Planning
@@ -57,7 +55,7 @@ Path to task file (e.g., `docs/tasks/feature-name.md`) and optionally a specific
    - Identify files to create or modify
 
 9. **Study All Referenced Files**
-   - Use `read_file` on each referenced file
+   - Read each referenced file thoroughly
    - Understand existing structure and patterns
    - Note integration points
 
@@ -91,6 +89,8 @@ Path to task file (e.g., `docs/tasks/feature-name.md`) and optionally a specific
     - Use same code structure as references
     - Follow established naming conventions
     - Apply consistent error handling
+    - **Apply file headers to all new files** (see Code Standards below)
+    - **Follow language-specific code style guides**
 
 15. **Test Incrementally**
     - Run tests after each significant change
@@ -161,39 +161,114 @@ Path to task file (e.g., `docs/tasks/feature-name.md`) and optionally a specific
     - **Report code coverage for new code**
     - Identify any follow-up items
 
-</detailed_sequence_of_steps>
+## Code Standards
 
-<test_driven_development>
-## TDD Principles
+### File Header Templates
+
+All new source files MUST include the appropriate header template. Select based on language:
+
+| Language | Header Template |
+|----------|-----------------|
+| JavaScript | `.github/copilot/templates/header-javascript.js` |
+| TypeScript | `.github/copilot/templates/header-typescript.ts` |
+| C# | `.github/copilot/templates/header-csharp.cs` |
+| Java | `.github/copilot/templates/header-java.java` |
+
+Header fields to populate:
+- `@file` - Filename
+- `@description` - Brief purpose description
+- `@author` - Developer name
+- `@date` - Creation date (YYYY-MM-DD)
+- `@ai-generated` - Set to `true`
+- `@ai-client` - Set to `GitHub Copilot`
+- `@ai-model` - Model used
+- `@copyright` - Organization copyright
+
+### Code Style Guides
+
+Follow language-specific coding standards from `.github/copilot/code-styles/`:
+
+| Language | Style Guide |
+|----------|-------------|
+| JavaScript | `code-style-javascript.md` |
+| TypeScript | `code-style-typescript.md` |
+| C# | `code-style-csharp.md` |
+| Java | `code-style-java.md` |
+
+Style guides cover:
+- Naming conventions
+- Formatting rules
+- Best practices
+- Documentation standards
+- Testing conventions
+
+## Test-Driven Development
+
+### TDD Principles
 
 Follow the Red-Green-Refactor cycle for all implementation:
 1. **Red**: Write a failing test first
 2. **Green**: Write minimal code to pass the test
 3. **Refactor**: Clean up while keeping tests green
 
-## Code Coverage Targets
+### Code Coverage Targets
 
 | Development Phase | Minimum Coverage | Focus Areas |
 |-------------------|------------------|-------------|
 | Phase 1 / POC | 20% | Core functionality, happy paths |
 | Beta Phase | 80% | Edge cases, error handling, integration |
 
-## Coverage Priority
+### Coverage Priority
+
 When adding tests to meet coverage targets, prioritize:
 1. Public API functions and methods
 2. Error handling and edge cases
 3. Critical business logic
 4. Integration points
-</test_driven_development>
 
-<important_guidelines>
+## Important Guidelines
+
 - **Write tests before implementation** - follow TDD Red-Green-Refactor
-- Stay within task boundaries - don't scope creep
-- Reference existing patterns extensively
-- Test incrementally - don't batch testing
-- Follow specified file structures
-- Verify dependencies before starting
-- Document everything for future reference
+- **Stay within task boundaries** - no scope creep
+- **Reference existing patterns extensively**
+- **Test incrementally** - don't batch testing
+- **Follow specified file structures**
+- **Verify dependencies before starting**
+- **Document everything** for future reference
+- **Apply file headers to all new source files**
+- **Follow the appropriate code style guide for the language**
 - **Verify code coverage meets phase requirements before completing**
-</important_guidelines>
-</task>
+
+## Task Completion Report Format
+
+```markdown
+## Task Complete: {Task ID}
+
+### Summary
+- Task: {task name}
+- Status: {Complete | Partial | Blocked}
+- Development Phase: {POC | Beta}
+
+### Implementation
+- Files Created: {list}
+- Files Modified: {list}
+
+### Test Coverage
+- Coverage Target: {20% for POC | 80% for Beta}
+- Coverage Achieved: {X%}
+- Coverage Status: {Met | Not Met}
+
+### Acceptance Criteria
+- [ ] {criterion 1}: {Pass/Fail}
+- [ ] {criterion 2}: {Pass/Fail}
+
+### Validation Results
+- Lint: {Pass/Fail}
+- Type Check: {Pass/Fail}
+- Tests: {Pass/Fail}
+
+### Notes
+- Deviations: {any deviations from plan}
+- Discoveries: {issues or insights found}
+- Follow-ups: {items for future attention}
+```

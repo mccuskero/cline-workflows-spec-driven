@@ -1,20 +1,18 @@
+---
+mode: agent
+description: Implement features from PRP (Product Requirements & Plan) specifications with comprehensive validation and testing
+---
+
 # Execute PRP - Implement from PRP Specification
 
-<task name="execute-prp">
-<task_objective>
-Implement features from PRP (Product Requirements & Plan) specifications with comprehensive validation and testing. Execute the complete implementation in a single pass using the detailed blueprint.
-</task_objective>
+Your objective is to implement features from PRP (Product Requirements & Plan) specifications with comprehensive validation and testing. Execute the complete implementation in a single pass using the detailed blueprint.
 
-<input>
-Path to PRP file (e.g., `docs/prps/feature-name.md`)
-</input>
-
-<detailed_sequence_of_steps>
+**Input:** Path to PRP file (e.g., `docs/prps/feature-name.md`)
 
 ## Phase 1: Load PRP
 
 1. **Read PRP Document**
-   - Use `read_file` to load the designated PRP file completely
+   - Load the designated PRP file completely
    - Parse and understand all sections:
      - Discovery Summary
      - Goal, Why, What
@@ -29,7 +27,7 @@ Path to PRP file (e.g., `docs/prps/feature-name.md`)
 
 3. **Extend Research if Needed**
    - If PRP references external documentation, review it
-   - Use `search_files` to explore any mentioned reference files
+   - Explore any mentioned reference files
    - Conduct additional codebase exploration as necessary
 
 ## Phase 2: Plan Implementation
@@ -40,7 +38,7 @@ Path to PRP file (e.g., `docs/prps/feature-name.md`)
    - Identify dependencies between tasks
 
 5. **Study Reference Files**
-   - Use `read_file` on ALL reference files specified in PRP
+   - Read ALL reference files specified in PRP
    - Understand structure, patterns, and organization
    - Note naming conventions and code style
 
@@ -69,8 +67,8 @@ Path to PRP file (e.g., `docs/prps/feature-name.md`)
 
    c. **Implement to Pass Tests (Green)**
       - Write minimal code to make tests pass
-      - Use `write_to_file` for new files
-      - Use `apply_diff` for modifications
+      - Create new files as needed
+      - Modify existing files carefully
       - Follow PRP specifications exactly
       - Apply established patterns from reference files
 
@@ -78,6 +76,8 @@ Path to PRP file (e.g., `docs/prps/feature-name.md`)
       - Clean up code while keeping tests green
       - Mirror reference patterns for your feature
       - Maintain consistency with existing codebase
+      - **Apply file headers to all new files** (see Code Standards below)
+      - **Follow language-specific code style guides**
 
 8. **Handle Integration Points**
    - Database: Follow existing schema patterns
@@ -142,39 +142,117 @@ Path to PRP file (e.g., `docs/prps/feature-name.md`)
     - Report final validation results
     - **Report code coverage percentage achieved**
 
-</detailed_sequence_of_steps>
+## Code Standards
 
-<test_driven_development>
-## TDD Principles
+### File Header Templates
+
+All new source files MUST include the appropriate header template. Select based on language:
+
+| Language | Header Template |
+|----------|-----------------|
+| JavaScript | `.github/copilot/templates/header-javascript.js` |
+| TypeScript | `.github/copilot/templates/header-typescript.ts` |
+| C# | `.github/copilot/templates/header-csharp.cs` |
+| Java | `.github/copilot/templates/header-java.java` |
+
+Header fields to populate:
+- `@file` - Filename
+- `@description` - Brief purpose description
+- `@author` - Developer name
+- `@date` - Creation date (YYYY-MM-DD)
+- `@ai-generated` - Set to `true`
+- `@ai-client` - Set to `GitHub Copilot`
+- `@ai-model` - Model used
+- `@copyright` - Organization copyright
+
+### Code Style Guides
+
+Follow language-specific coding standards from `.github/copilot/code-styles/`:
+
+| Language | Style Guide |
+|----------|-------------|
+| JavaScript | `code-style-javascript.md` |
+| TypeScript | `code-style-typescript.md` |
+| C# | `code-style-csharp.md` |
+| Java | `code-style-java.md` |
+
+Style guides cover:
+- Naming conventions
+- Formatting rules
+- Best practices
+- Documentation standards
+- Testing conventions
+
+## Test-Driven Development
+
+### TDD Principles
 
 Follow the Red-Green-Refactor cycle for all implementation:
 1. **Red**: Write a failing test first
 2. **Green**: Write minimal code to pass the test
 3. **Refactor**: Clean up while keeping tests green
 
-## Code Coverage Targets
+### Code Coverage Targets
 
 | Development Phase | Minimum Coverage | Focus Areas |
 |-------------------|------------------|-------------|
 | Phase 1 / POC | 20% | Core functionality, happy paths |
 | Beta Phase | 80% | Edge cases, error handling, integration |
 
-## Coverage Priority
+### Coverage Priority
+
 When adding tests to meet coverage targets, prioritize:
 1. Public API functions and methods
 2. Error handling and edge cases
 3. Critical business logic
 4. Integration points
-</test_driven_development>
 
-<important_guidelines>
+## Important Guidelines
+
 - **Write tests before implementation** - follow TDD Red-Green-Refactor
-- Never skip reading reference files before implementing
-- Mirror existing patterns exactly - consistency matters
-- Run validations frequently, not just at the end
-- If validation fails, fix and retry - don't proceed with broken code
-- Follow PRP specifications precisely
-- Document any necessary deviations
+- **Never skip reading reference files before implementing**
+- **Mirror existing patterns exactly** - consistency matters
+- **Run validations frequently**, not just at the end
+- If validation fails, **fix and retry** - don't proceed with broken code
+- **Follow PRP specifications precisely**
+- **Document any necessary deviations** with clear reasoning
+- **Apply file headers to all new source files**
+- **Follow the appropriate code style guide for the language**
 - **Verify code coverage meets phase requirements before completing**
-</important_guidelines>
-</task>
+
+## Completion Report Format
+
+When implementation is complete, provide a summary:
+
+```markdown
+## Implementation Complete
+
+### Summary
+- Feature: {feature name}
+- PRP: {path to PRP}
+- Status: {Complete | Partial}
+- Development Phase: {POC | Beta}
+
+### Files Created
+- {path}: {description}
+
+### Files Modified
+- {path}: {what changed}
+
+### Test Coverage
+- Coverage Target: {20% for POC | 80% for Beta}
+- Coverage Achieved: {X%}
+- Coverage Status: {Met | Not Met}
+
+### Validation Results
+- Lint: {Pass/Fail}
+- Type Check: {Pass/Fail}
+- Tests: {Pass/Fail}
+- Build: {Pass/Fail}
+
+### Deviations from PRP
+- {deviation}: {reasoning}
+
+### Follow-up Items
+- {item needing attention}
+```

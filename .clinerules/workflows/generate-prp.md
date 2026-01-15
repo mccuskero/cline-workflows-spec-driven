@@ -28,6 +28,9 @@ Feature description, user story, or path to brainstorming document
    - Ask questions ONE at a time
    - Wait for responses before proceeding
    - Use `<thinking>` blocks to analyze each response
+   - **Ask about development phase** to determine coverage targets:
+     - Phase 1/POC (20% coverage target)
+     - Beta (80% coverage target)
 
 3. **Decision Gate**
    - Only proceed to Phase 2 when gaps are adequately addressed
@@ -93,10 +96,23 @@ Feature description, user story, or path to brainstorming document
    - Pseudocode with critical details
    - Integration points (database, API, routing, state)
 
+   ### Testing Strategy (TDD)
+   - Test-Driven Development approach (Red-Green-Refactor)
+   - Test file naming conventions
+   - Test frameworks and tools to use
+   - Coverage commands and reporting
+
+   ### Code Coverage Requirements
+   - **Development Phase**: {Phase 1/POC | Beta}
+   - **Target Coverage**: {20% for POC | 80% for Beta}
+   - Coverage focus areas for this feature
+   - Critical paths requiring test coverage
+
    ### Validation Loop
    - Lint and type-check commands
-   - Test commands
-   - Final checklist (tests, linting, builds, manual verification)
+   - Test commands (with coverage reporting)
+   - Coverage verification command
+   - Final checklist (tests, linting, builds, coverage, manual verification)
    - Anti-patterns to avoid
 
 9. **Save PRP Document**
@@ -132,12 +148,26 @@ Feature description, user story, or path to brainstorming document
 
 </detailed_sequence_of_steps>
 
+<test_driven_development>
+## Code Coverage Targets
+
+| Development Phase | Minimum Coverage | Focus Areas |
+|-------------------|------------------|-------------|
+| Phase 1 / POC | 20% | Core functionality, happy paths |
+| Beta Phase | 80% | Edge cases, error handling, integration |
+
+Always ask about development phase to determine appropriate coverage target.
+Include coverage commands and targets in every PRP.
+</test_driven_development>
+
 <important_guidelines>
 - Ask clarification questions in the user's language
 - Write final PRP document in English
 - Include ALL relevant documentation references
-- Provide executable test/lint commands
+- Provide executable test/lint commands with coverage reporting
 - Use existing codebase keywords and patterns
 - Never assume - ask when uncertain
+- **Always include Testing Strategy and Coverage Requirements sections in PRP**
+- **Ask about development phase to set appropriate coverage targets**
 </important_guidelines>
 </task>
